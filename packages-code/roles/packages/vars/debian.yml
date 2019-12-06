@@ -1,6 +1,0 @@
-debian:
-- curl                      # curl required by Ambari
-- unzip                     # unzip required by Ambari
-- tar                       # tar required by Ambari
-- wget
-- git

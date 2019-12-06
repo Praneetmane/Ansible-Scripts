@@ -1,7 +1,0 @@
----
-- name: Apply the common role
-  hosts: localhost
-  any_errors_fatal: true
-  become: yes
-  roles:
-    - packages
