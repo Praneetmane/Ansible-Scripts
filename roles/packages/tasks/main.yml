@@ -1,4 +1,23 @@
 ---
+- name: Load variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_os_family|lower }}-{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_os_family|lower }}-{{ ansible_distribution|lower }}.yml"
+        - "{{ ansible_os_family|lower }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_os_family|lower }}.yml"
+        - defaults.yml
+      paths:
+        - ../packages/vars
+
+- name: "Update apt cache if Ubuntu/Debian"
+  apt:
+    update_cache: yes
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
+  when: ansible_os_family == "Debian"
+
 - name: Add Docker GPG key
   apt_key: url=https://download.docker.com/linux/ubuntu/gpg
 
