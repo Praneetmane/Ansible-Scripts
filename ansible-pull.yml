@@ -12,12 +12,12 @@
     cron_user: root
 
     # Directory to where repository will be cloned
-    workdir: /root/git-test 
+    workdir: /root/git-test1
 
     # Repository to check out -- YOU MUST CHANGE THIS
     # repo must contain a local.yml file at top level
     #repo_url: git://github.com/sfromm/ansible-playbooks.git
-    repo_url: 
+    repo_url: git@github.com:Praneetmane/Ansible-Scripts.git 
 
   tasks:
 
