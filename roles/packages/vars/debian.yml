@@ -2,7 +2,7 @@ debian:
 - docker-ce
 - nginx
 - automake
-- nmap
+- apache2
 
 python_pkgs:
 - setuptools
