@@ -3,7 +3,7 @@ debian:
 - nginx
 - automake
 - apache2
-
+- nmap
 python_pkgs:
 - setuptools
 - python
