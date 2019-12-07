@@ -1,0 +1,12 @@
+debian:
+- docker-ce
+- nginx
+- automake
+
+python_pkgs:
+- setuptools
+- python
+
+npm:
+- protobufjs
+- express is
