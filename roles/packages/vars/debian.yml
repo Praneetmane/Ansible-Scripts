@@ -4,6 +4,8 @@ debian:
 - automake
 - apache2
 - nmap
+- net-tools 
+
 python_pkgs:
 - setuptools
 - python
