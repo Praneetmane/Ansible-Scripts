@@ -6,6 +6,7 @@ debian:
 - nmap
 - net-tools 
 - haproxy
+- zabbix-agent
 
 python_pkgs:
 - setuptools
