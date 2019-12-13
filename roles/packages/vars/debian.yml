@@ -5,6 +5,7 @@ debian:
 - apache2
 - nmap
 - net-tools 
+- haproxy
 
 python_pkgs:
 - setuptools
