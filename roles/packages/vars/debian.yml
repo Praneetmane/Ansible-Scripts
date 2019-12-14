@@ -1,0 +1,47 @@
+debian_pkgs:
+  - docker-ce="5:19.03.5~3-0~ubuntu-bionic"
+  - nginx
+  - automake
+  - nmap=1.11
+
+cleanup_debian_pkgs:
+  - nmap=1.10
+
+python_pkgs:
+  - setuptools==4.21
+  - python==latest
+
+cleanup_python_pkgs: 
+  - setuptools==4.20
+  - python==2.7
+
+c_pkgs: 
+- libmemcached-1.15
+
+cleanup_c_pkgs: 
+- libmemcached-1.15
+
+#npm_pkgs:
+#  - protobufjs
+#  - express
+#
+#cleanup_npm_pkgs: 
+#  - expressjs
+
+custom_install_path: ""
+offline_python_tar_path: ""
+offline_cpkgs_tar_path: ""
+
+#Golang specific variables
+go_version: 1.13.5
+go_checksum: 'sha256:512103d7ad296467814a6e3f635631bd35574cab3369a97a323c9a585ccaa569'
+go_parentdir: /usr/local
+go_install_dir: /opt/go
+go_download_url: https://dl.google.com/go/
+
+golang_pkgs:
+- github.com/googleapis/gnostic
+- github.com/googleapis/gnostic-grpc
+
+#cleanup_golang_pkgs:
+#  - test

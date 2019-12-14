@@ -1,0 +1,37 @@
+---
+- name: Setup ansible-pull parameters and cron job
+  hosts: localhost
+  any_errors_fatal: true
+  become: yes
+  vars:
+
+    # schedule is fed directly to cron
+    schedule: '*/15 * * * *'
+
+    # User to run ansible-pull as from cron
+    cron_user: root
+
+    # Directory to where repository will be cloned
+    workdir: /opt/ansible-pull-dir 
+
+    # File that ansible will use for logs
+    logfile: /var/log/ansible-pull.log
+
+    # Repository to check out -- YOU MUST CHANGE THIS
+    repo_url: git@github.com:<USER/REPO>.git
+
+    # Branch from where the pull need to be triggered. 
+    branch_name: ""
+
+  tasks:
+
+    - name: Create local directory to work from
+      file: path={{workdir}} state=directory owner=root group=root mode=0751
+
+    - name: Create crontab entry to clone/pull git repository
+      template: 
+          src: ansible-pull.j2  
+          dest: /etc/cron.d/ansible-pull 
+          owner: root 
+          group: root 
+          mode: 0644

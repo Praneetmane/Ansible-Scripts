@@ -1,0 +1,7 @@
+---
+- name: Apply Packages 
+  hosts: python
+  any_errors_fatal: true
+  become: yes
+  roles:
+    - packages

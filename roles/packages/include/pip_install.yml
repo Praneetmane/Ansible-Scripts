@@ -1,0 +1,28 @@
+---
+- name: Load variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_os_family|lower }}-{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_os_family|lower }}-{{ ansible_distribution|lower }}.yml"
+        - "{{ ansible_os_family|lower }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_os_family|lower }}.yml"
+        - defaults.yml
+      paths:
+        - ../packages/vars
+
+- name: Install list of python packages
+  pip:
+    name: "{{ pkg_name }}"
+  register: pip_rc
+  ignore_errors: true
+
+- debug: var=pip_rc.failed
+
+- name: Install python packages from NFS mount
+  shell: |
+    mkdir -p {{ custom_install_path }}
+    tar -xvf {{ offline_python_tar_path }}/{{ pkg_name }}.tar.gz -C {{ custom_install_path }}
+    cd {{ custom_install_path }}/{{ pkg_name }}/
+    python setup.py install
+  when: pip_rc.failed == true
