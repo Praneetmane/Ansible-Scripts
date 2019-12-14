@@ -1,6 +1,6 @@
 ---
 - name: Apply Packages 
-  hosts: python
+  hosts: localhost
   any_errors_fatal: true
   become: yes
   roles:
