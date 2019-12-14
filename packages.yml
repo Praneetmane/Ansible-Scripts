@@ -1,7 +1,0 @@
----
-- name: Apply Packages 
-  hosts: localhost
-  any_errors_fatal: true
-  become: yes
-  roles:
-    - packages
